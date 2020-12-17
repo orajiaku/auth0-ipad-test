@@ -35,7 +35,7 @@ function App() {
     }
 
     if (isAuthenticated) getToken();
-  }, [isAuthenticated]);
+  }, [isAuthenticated, getAccessTokenSilently]);
 
   const handleLogout = () => {
     logout({ returnTo: window.location.origin });
