@@ -6,7 +6,7 @@ This repo demonstrates a bug when running getting tokens on an iPad. The project
 The culprit has been narrowed down to the `getAccessTokenSilently` function call, which only fails when a scope parameter is passed in. Also, this failure is only observed on iPad's for now.
 
 ## Steps to reproduce
-* Go to https://auth0-ipad-test.vercel.app/on a laptop/desktop
+* Go to https://auth0-ipad-test.vercel.app/ on a laptop/desktop
 * Click on authenticate and authenticate with the following credentials
     email: test@gmail.com
     password: P@55W0rd
