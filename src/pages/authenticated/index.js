@@ -8,6 +8,8 @@ import '../../App.css';
 
 function App() {
   const [fetchingToken, setFetchingToken] = useState(true);
+  const [message, setMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const { getAccessTokenSilently, isAuthenticated, logout } = useAuth0();
 
@@ -15,20 +17,21 @@ function App() {
     const getToken = async () => {
       setFetchingToken(true)
 
-      console.log('Attempting login');
+      setMessage('Attempting login');
 
       try {
-        const token = await getAccessTokenSilently({
-          audience: config.AUTH0_AUDIENCE
+        await getAccessTokenSilently({
+          audience: config.AUTH0_AUDIENCE,
+          scope: 'read'
         });
 
-        console.log('Logged in successfully', token);
-        
-        alert('WE IN!!!')
+        setMessage('Logged in successfully');
+        setErrorMessage('');
 
         setFetchingToken(false)
       } catch(e) {
-        console.error(e.message);
+        setErrorMessage(e.message);
+        setMessage('');
 
         setFetchingToken(false);
       }
@@ -38,7 +41,7 @@ function App() {
   }, [isAuthenticated, getAccessTokenSilently]);
 
   const handleLogout = () => {
-    logout({ returnTo: window.location.origin });
+    logout({ returnTo: config.REDIRECT_URL });
   }
 
   return (
@@ -56,11 +59,25 @@ function App() {
         >
           Learn React
         </a>
+
         {fetchingToken &&
           <div>
             LOADING TOKEN...
           </div>
         }
+
+        <div>
+          <h2>
+            {message}
+          </h2>
+        </div>
+
+        <div>
+          <h2 style={{ color: 'red' }}>
+            {errorMessage}
+          </h2>
+        </div>
+
         {isAuthenticated &&
           <button onClick={handleLogout}>
             Logout
