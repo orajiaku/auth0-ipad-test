@@ -12,3 +12,6 @@ The culprit has been narrowed down to the `getAccessTokenSilently` function call
     password: P@55W0rd
 * You should be authenticated correctly.
 * Go through all the steps above but on an iPad, and you should get a `Login Required` Error.
+
+## Software
+* The project was built on Node 10.16.0
