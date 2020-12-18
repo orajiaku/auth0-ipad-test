@@ -15,8 +15,8 @@ The culprit has been narrowed down to the `getAccessTokenSilently` function call
 * Node v10.16.0
 
 ## Environment Variables
-REACT_APP_AUTH0_DOMAIN =
-REACT_APP_AUTH0_CLIENT_ID =
-REACT_APP_API_ENDPOINT = 
-HOST=0.0.0.0
-HTTPS=true
+REACT_APP_AUTH0_DOMAIN =\
+REACT_APP_AUTH0_CLIENT_ID =\
+REACT_APP_API_ENDPOINT = \
+HOST=0.0.0.0\
+HTTPS=true\
